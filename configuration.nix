@@ -25,9 +25,9 @@
   '';
 
   networking.wireless.networks = {
-	"GOHEELS".psk = "WoolyBuLLY57";
-	"Puppers Place AROOOoo!".psk = "5MatildaLipovi1#";
-};
+    "GOHEELS".psk = "WoolyBuLLY57";
+    "Puppers Place AROOOoo!".psk = "5MatildaLipovi1#";
+  };
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
@@ -92,6 +92,7 @@
     upterm
     kitty
     tmux
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -100,6 +101,13 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # List services that you want to enable:
